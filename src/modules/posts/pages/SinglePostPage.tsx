@@ -1,3 +1,6 @@
+import { useParams } from "react-router-dom";
 export const SinglePostPage = () => {
-  return <div> single post page</div>;
+  const { id } = useParams();
+
+  return <div> {`single post page ${id}`}</div>;
 };
