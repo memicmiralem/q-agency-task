@@ -10,9 +10,12 @@ export const Comments = ({ postId }: CommentProps) => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col rounded border border-solid border-gray-200 p-4 gap-y-2">
       {data.map((e: any) => (
-        <div key={e.id}>{e.body}</div>
+        <div className="flex justify-between" key={e.id}>
+          <div className="">{e.name}</div>
+          <div className="">{e.email}</div>
+        </div>
       ))}
     </div>
   );
