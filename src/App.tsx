@@ -1,8 +1,21 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PostsPage } from "./modules/posts/pages/PostsPage";
+import { SinglePostPage } from "./modules/posts/pages/SinglePostPage";
+import { PageNotFound } from "./shared/pages/PageNotFound";
+import { ROUTES } from "./core/navigation/routes";
 
-function App() {
-  return <div className="text-blue-500 text-5xl">Hello world</div>;
-}
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={ROUTES.POSTS} element={<PostsPage />} />
+        <Route path={ROUTES.SINGLE_POST} element={<SinglePostPage />} />
+        <Route path={ROUTES.NOT_FOUND} element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
