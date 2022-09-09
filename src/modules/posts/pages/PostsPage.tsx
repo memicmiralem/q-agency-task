@@ -1,4 +1,5 @@
-import { PostProps, usePosts } from "../hooks/usePosts";
+import { Post, PostProps } from "../components/post";
+import { usePosts } from "../hooks/usePosts";
 
 export const PostsPage = () => {
   const { data, error } = usePosts();
@@ -10,7 +11,7 @@ export const PostsPage = () => {
   return (
     <div className="flex flex-col gap-y-4">
       {data?.map((e: PostProps) => (
-        <div key={e.id}>{e.title}</div>
+        <Post key={e.id} {...e} />
       ))}
     </div>
   );
