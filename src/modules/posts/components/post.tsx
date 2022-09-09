@@ -9,8 +9,8 @@ export interface PostProps {
 
 export const Post = ({ title, body, id }: PostProps) => {
   return (
-    <div className="flex flex-col">
-      <div>{title}</div>
+    <div className="flex flex-col gap-y-2 bg-white rounded p-5">
+      <div className="font-semibold text-xl">{title}</div>
       <div>{body}</div>
       <Comments postId={id} />
     </div>
