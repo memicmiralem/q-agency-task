@@ -10,6 +10,7 @@ export const PostsPage = () => {
   const { posts, error, isLoading, hasMore } = usePosts({ page, keyword });
 
   const observer = useRef<IntersectionObserver>();
+  const topOfListRef = useRef<null | HTMLDivElement>(null);
   const lastElementRef = useCallback(
     (node: Element | null) => {
       if (isLoading) return;
@@ -29,14 +30,27 @@ export const PostsPage = () => {
     setPage(1);
   };
 
+  const handleScrollToTop = () => {
+    topOfListRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
       <PageHeaderWithFilter onFilterChange={onFilterChange} />
       <div>
         {posts?.map((e: PostProps, i) => (
           <Post key={i} {...e} />
         ))}
-        <div ref={lastElementRef}></div>
+        <div
+          ref={lastElementRef}
+          onClick={handleScrollToTop}
+          className="hover:font-semibold cursor-pointer w-fit"
+        >
+          Scroll to top
+        </div>
         {error && <div>failed to load</div>}
         {isLoading && <div>loading...</div>}
       </div>
