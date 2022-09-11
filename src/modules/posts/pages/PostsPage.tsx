@@ -1,8 +1,5 @@
 import { useCallback, useRef, useState } from "react";
-import {
-  MemoPageHeaderWithFilter,
-  PageHeaderWithFilter,
-} from "../../../shared/components/pageHeaderWithFilter";
+import { MemoPageHeaderWithFilter } from "../../../shared/components/pageHeaderWithFilter";
 import { Post, PostProps } from "../components/post";
 import { usePosts } from "../hooks/usePosts";
 

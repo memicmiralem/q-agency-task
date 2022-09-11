@@ -6,16 +6,19 @@ import { SinglePostPage } from "./modules/posts/pages/SinglePostPage";
 import { PageNotFound } from "./shared/pages/PageNotFound";
 import { ROUTES } from "./core/navigation/routes";
 import { BasePageLayout } from "./shared/pages/BasePageLayout";
+import { UserProvider } from "./core/contexts/UserContext";
 
 const App = () => {
   return (
     <BasePageLayout>
       <BrowserRouter>
-        <Routes>
-          <Route path={ROUTES.POSTS} element={<PostsPage />} />
-          <Route path={ROUTES.SINGLE_POST} element={<SinglePostPage />} />
-          <Route path={ROUTES.NOT_FOUND} element={<PageNotFound />} />
-        </Routes>
+        <UserProvider>
+          <Routes>
+            <Route path={ROUTES.POSTS} element={<PostsPage />} />
+            <Route path={ROUTES.SINGLE_POST} element={<SinglePostPage />} />
+            <Route path={ROUTES.NOT_FOUND} element={<PageNotFound />} />
+          </Routes>
+        </UserProvider>
       </BrowserRouter>
     </BasePageLayout>
   );
