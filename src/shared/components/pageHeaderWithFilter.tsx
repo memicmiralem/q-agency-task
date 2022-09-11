@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
 export interface PageHeaderWithFilterProps {
   onFilterChange: (input: string) => void;
@@ -26,3 +26,5 @@ export const PageHeaderWithFilter = ({
     </div>
   );
 };
+
+export const MemoPageHeaderWithFilter = memo(PageHeaderWithFilter);

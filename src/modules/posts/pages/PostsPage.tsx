@@ -1,5 +1,8 @@
 import { useCallback, useRef, useState } from "react";
-import { PageHeaderWithFilter } from "../../../shared/components/pageHeaderWithFilter";
+import {
+  MemoPageHeaderWithFilter,
+  PageHeaderWithFilter,
+} from "../../../shared/components/pageHeaderWithFilter";
 import { Post, PostProps } from "../components/post";
 import { usePosts } from "../hooks/usePosts";
 
@@ -39,7 +42,7 @@ export const PostsPage = () => {
 
   return (
     <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
-      <PageHeaderWithFilter onFilterChange={onFilterChange} />
+      <MemoPageHeaderWithFilter onFilterChange={onFilterChange} />
       <div>
         {posts?.map((e: PostProps, i) => (
           <Post key={i} {...e} />

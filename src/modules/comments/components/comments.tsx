@@ -1,10 +1,10 @@
 import { useComments } from "../hooks/useComments";
 
-export interface CommentProps {
+export interface CommentsProps {
   postId: number;
 }
 
-export const Comments = ({ postId }: CommentProps) => {
+export const Comments = ({ postId }: CommentsProps) => {
   const { data, error } = useComments({ postId });
 
   if (error) return <div>failed to load</div>;
