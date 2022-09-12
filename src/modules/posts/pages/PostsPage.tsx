@@ -51,9 +51,9 @@ export const PostsPage = () => {
       <div
         ref={lastElementRef}
         onClick={handleScrollToTop}
-        className="hover:font-semibold cursor-pointer w-fit"
+        className="hover:font-semibold cursor-pointer w-full flex flex-row-reverse"
       >
-        Scroll to top
+        <div className="w-fit pb-10">Scroll to top</div>
       </div>
       {error && <div>failed to load</div>}
       {isLoading && <div>loading...</div>}

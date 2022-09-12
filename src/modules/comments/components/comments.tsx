@@ -10,13 +10,21 @@ export const Comments = ({ postId }: CommentsProps) => {
   if (!data) return <div>loading...</div>;
 
   return (
-    <div className="flex flex-col rounded border border-solid border-gray-200 p-4 gap-y-2">
-      {data.map(({ id, name, email }) => (
-        <div className="flex justify-between" key={id}>
-          <div>{name}</div>
-          <div>{email}</div>
-        </div>
-      ))}
+    <div className="rounded border border-solid border-gray-300">
+      <div className="-mt-3.5 ml-4 w-fit bg-white text-font-secondary">
+        Comments
+      </div>
+      <div className="flex flex-col pt-2">
+        {data.map(({ id, name, email }) => (
+          <div
+            className="flex justify-between px-4 py-2 odd:bg-white even:bg-slate-50 last:rounded-b"
+            key={id}
+          >
+            <div>{name}</div>
+            <div>{email}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
