@@ -1,13 +1,9 @@
-import { memo, useState } from "react";
+import { useState } from "react";
+import { useFilter } from "../../core/contexts/FilterContext";
 
-export interface PageHeaderWithFilterProps {
-  onFilterChange: (input: string) => void;
-}
-
-export const PageHeaderWithFilter = ({
-  onFilterChange,
-}: PageHeaderWithFilterProps) => {
+export const PageHeaderWithFilter = () => {
   const [input, setInput] = useState("");
+  const filter = useFilter();
   return (
     <div className="w-full h-20 bg-slate-800 top-0 left-0 fixed flex items-center justify-around">
       <div className="text-white text-3xl font-semibold">
@@ -19,12 +15,10 @@ export const PageHeaderWithFilter = ({
         type="text"
         value={input}
         onChange={(e) => {
-          onFilterChange(e.target.value);
           setInput(e.target.value);
+          filter.setFilter(e.target.value);
         }}
       />
     </div>
   );
 };
-
-export const MemoPageHeaderWithFilter = memo(PageHeaderWithFilter);

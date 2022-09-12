@@ -7,17 +7,20 @@ import { PageNotFound } from "./shared/pages/PageNotFound";
 import { ROUTES } from "./core/navigation/routes";
 import { BasePageLayout } from "./shared/pages/BasePageLayout";
 import { UserProvider } from "./core/contexts/UserContext";
+import { FilterProvider } from "./core/contexts/FilterContext";
 
 const App = () => {
   return (
     <BasePageLayout>
       <BrowserRouter>
         <UserProvider>
-          <Routes>
-            <Route path={ROUTES.POSTS} element={<PostsPage />} />
-            <Route path={ROUTES.SINGLE_POST} element={<SinglePostPage />} />
-            <Route path={ROUTES.NOT_FOUND} element={<PageNotFound />} />
-          </Routes>
+          <FilterProvider>
+            <Routes>
+              <Route path={ROUTES.POSTS} element={<PostsPage />} />
+              <Route path={ROUTES.SINGLE_POST} element={<SinglePostPage />} />
+              <Route path={ROUTES.NOT_FOUND} element={<PageNotFound />} />
+            </Routes>
+          </FilterProvider>
         </UserProvider>
       </BrowserRouter>
     </BasePageLayout>

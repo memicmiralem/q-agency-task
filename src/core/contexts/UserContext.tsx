@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "../api/fetcher";
+import { useFilter } from "./FilterContext";
 
 export interface GeoProps {
   lat: string;
@@ -39,6 +40,14 @@ export interface UseUserProps {
 export const useUser = ({ userId }: UseUserProps) => {
   const users = useContext(UserContext);
   return users.find((item) => item.id === userId);
+};
+
+export const useFilteredUser = () => {
+  const filter = useFilter().currentFilter.toLowerCase();
+  const users = useContext(UserContext);
+  return filter.length > 0
+    ? users.find((item) => item.name.toLowerCase().includes(filter))
+    : null;
 };
 
 export interface UserProviderProps {

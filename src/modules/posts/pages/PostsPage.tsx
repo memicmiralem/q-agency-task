@@ -1,16 +1,24 @@
-import { useCallback, useRef, useState } from "react";
-import { MemoPageHeaderWithFilter } from "../../../shared/components/pageHeaderWithFilter";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useFilter } from "../../../core/contexts/FilterContext";
+import { PageHeaderWithFilter } from "../../../shared/components/pageHeaderWithFilter";
 import { Post, PostProps } from "../components/post";
 import { usePosts } from "../hooks/usePosts";
 
 export const PostsPage = () => {
-  const [keyword, setKeyword] = useState("");
   const [page, setPage] = useState(1);
+  const filter = useFilter().currentFilter;
 
-  const { posts, error, isLoading, hasMore } = usePosts({ page, keyword });
+  useEffect(() => {
+    setPage(1);
+  }, [filter]);
+
+  const { posts, error, isLoading, hasMore } = usePosts({
+    page,
+  });
 
   const observer = useRef<IntersectionObserver>();
   const topOfListRef = useRef<null | HTMLDivElement>(null);
+
   const lastElementRef = useCallback(
     (node: Element | null) => {
       if (isLoading) return;
@@ -25,11 +33,6 @@ export const PostsPage = () => {
     [isLoading, hasMore]
   );
 
-  const onFilterChange = (keyword: string) => {
-    setKeyword(keyword);
-    setPage(1);
-  };
-
   const handleScrollToTop = () => {
     topOfListRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -39,7 +42,7 @@ export const PostsPage = () => {
 
   return (
     <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
-      <MemoPageHeaderWithFilter onFilterChange={onFilterChange} />
+      <PageHeaderWithFilter />
       <div>
         {posts?.map((e: PostProps, i) => (
           <Post key={i} {...e} />
