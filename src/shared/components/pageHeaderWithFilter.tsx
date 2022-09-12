@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { HelloMessageProps } from "../../core/constants/messages";
 import { useFilter } from "../../core/contexts/FilterContext";
+import { useHelloEffect } from "../../core/hooks/useHelloEffect";
 
-export const PageHeaderWithFilter = () => {
+export const PageHeaderWithFilter = ({ propsMessage }: HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: PageHeaderWithFilter });
   const [input, setInput] = useState("");
   const filter = useFilter();
   return (

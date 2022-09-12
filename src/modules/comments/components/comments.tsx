@@ -1,3 +1,5 @@
+import { HelloMessageProps } from "../../../core/constants/messages";
+import { useHelloEffect } from "../../../core/hooks/useHelloEffect";
 import { Error } from "../../../shared/components/error";
 import { Loading } from "../../../shared/components/loading";
 import { useComments } from "../hooks/useComments";
@@ -6,10 +8,15 @@ export interface CommentsProps {
   postId: number;
 }
 
-export const Comments = ({ postId }: CommentsProps) => {
+export const Comments = ({
+  postId,
+  propsMessage,
+}: CommentsProps & HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: Comments });
+
   const { data, error } = useComments({ postId });
-  if (error) return <Error />;
-  if (!data) return <Loading />;
+  if (error) return <Error propsMessage={propsMessage} />;
+  if (!data) return <Loading propsMessage={propsMessage} />;
 
   return (
     <div className="rounded border border-solid border-gray-300">

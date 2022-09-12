@@ -5,8 +5,12 @@ import { Error } from "../../../shared/components/error";
 import { PageHeaderWithFilter } from "../../../shared/components/pageHeaderWithFilter";
 import { Post, PostProps } from "../components/post";
 import { usePosts } from "../hooks/usePosts";
+import { HelloMessageProps } from "../../../core/constants/messages";
+import { useHelloEffect } from "../../../core/hooks/useHelloEffect";
 
-export const PostsPage = () => {
+export const PostsPage = ({ propsMessage }: HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: PostsPage });
+
   const [page, setPage] = useState(1);
   const filter = useFilter().currentFilter;
 
@@ -43,10 +47,10 @@ export const PostsPage = () => {
   };
   return (
     <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
-      <PageHeaderWithFilter />
+      <PageHeaderWithFilter propsMessage={propsMessage} />
       <div className="flex flex-col gap-y-4">
         {posts?.map((e: PostProps, i) => (
-          <Post key={i} {...e} />
+          <Post key={i} {...e} propsMessage={propsMessage} />
         ))}
       </div>
       <div
@@ -54,8 +58,8 @@ export const PostsPage = () => {
         onClick={handleScrollToTop}
         className="w-full flex flex-col items-center justify-center pb-10"
       >
-        {error && <Error />}
-        {isLoading && <Loading />}
+        {error && <Error propsMessage={propsMessage} />}
+        {isLoading && <Loading propsMessage={propsMessage} />}
         <div className="hover:font-semibold cursor-pointer w-fit">
           Scroll to top
         </div>

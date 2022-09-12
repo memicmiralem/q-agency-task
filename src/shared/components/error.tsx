@@ -1,5 +1,9 @@
 import { ReactComponent as ErrorIcon } from "../../assets/error.svg";
+import { HelloMessageProps } from "../../core/constants/messages";
+import { useHelloEffect } from "../../core/hooks/useHelloEffect";
 
-export const Error = () => {
+export const Error = ({ propsMessage }: HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: Error });
+
   return <ErrorIcon width={24} className="animate-pulse" />;
 };

@@ -1,13 +1,20 @@
+import { HelloMessageProps } from "../../../core/constants/messages";
 import { useUser } from "../../../core/contexts/UserContext";
+import { useHelloEffect } from "../../../core/hooks/useHelloEffect";
 
 export interface AboutUserProps {
   title: string;
   userId: number;
 }
 
-export const AboutUser = ({ title, userId }: AboutUserProps) => {
-  const user = useUser({ userId });
+export const AboutUser = ({
+  title,
+  userId,
+  propsMessage,
+}: AboutUserProps & HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: AboutUser });
 
+  const user = useUser({ userId });
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="text-2xl">{title}</div>

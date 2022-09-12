@@ -1,14 +1,18 @@
 import { useParams } from "react-router-dom";
+import { HelloMessageProps } from "../../../core/constants/messages";
+import { useHelloEffect } from "../../../core/hooks/useHelloEffect";
 import { BasicPageHeader } from "../../../shared/components/basicPageHeader";
 import { PostDetails } from "../components/postDetails";
 
-export const SinglePostPage = () => {
+export const SinglePostPage = ({ propsMessage }: HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: SinglePostPage });
+
   const { id } = useParams();
 
   return (
     <div className="h-screen">
-      <BasicPageHeader />
-      <PostDetails id={id} />
+      <BasicPageHeader propsMessage={propsMessage} />
+      <PostDetails id={id} propsMessage={propsMessage} />
     </div>
   );
 };

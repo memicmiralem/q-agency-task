@@ -1,6 +1,8 @@
 import { createContext, useContext } from "react";
 import useSWR from "swr";
 import { fetcher } from "../api/fetcher";
+import { HelloMessageProps } from "../constants/messages";
+import { useHelloEffect } from "../hooks/useHelloEffect";
 import { useFilter } from "./FilterContext";
 
 export interface GeoProps {
@@ -56,7 +58,12 @@ export interface UserProviderProps {
 
 const UserContext = createContext([] as UserProps[]);
 
-export const UserProvider = ({ children }: UserProviderProps) => {
+export const UserProvider = ({
+  children,
+  propsMessage,
+}: UserProviderProps & HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: UserProvider });
+
   const shouldFetch = localStorage.getItem("users") === null;
   const { data } = useSWR(shouldFetch ? `/users` : null, fetcher);
 

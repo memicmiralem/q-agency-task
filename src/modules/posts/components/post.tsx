@@ -1,7 +1,9 @@
 import { useUser } from "../../../core/contexts/UserContext";
 import { Comments } from "../../comments/components/comments";
 import { useNavigate, generatePath } from "react-router-dom";
-import { ROUTES } from "../../../core/navigation/routes";
+import { ROUTES } from "../../../core/constants/routes";
+import { HelloMessageProps } from "../../../core/constants/messages";
+import { useHelloEffect } from "../../../core/hooks/useHelloEffect";
 export interface PostProps {
   userId: number;
   id: number;
@@ -9,7 +11,15 @@ export interface PostProps {
   body: string;
 }
 
-export const Post = ({ userId, id, title, body }: PostProps) => {
+export const Post = ({
+  userId,
+  id,
+  title,
+  body,
+  propsMessage,
+}: PostProps & HelloMessageProps) => {
+  useHelloEffect({ propsMessage, fun: Post });
+
   const user = useUser({ userId });
   const navigate = useNavigate();
   const handleClick = () =>
@@ -26,7 +36,7 @@ export const Post = ({ userId, id, title, body }: PostProps) => {
         <div className="font-semibold min-w-fit">{user?.name}</div>
       </div>
       <div className="text-font-primary">{body}</div>
-      <Comments postId={id} />
+      <Comments postId={id} propsMessage={propsMessage} />
     </div>
   );
 };
