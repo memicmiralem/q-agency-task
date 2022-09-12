@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { PostsPage } from "./modules/posts/pages/PostsPage";
 import { SinglePostPage } from "./modules/posts/pages/SinglePostPage";
 import { PageNotFound } from "./shared/pages/PageNotFound";
@@ -16,6 +16,7 @@ const App = () => {
         <UserProvider>
           <FilterProvider>
             <Routes>
+              <Route index element={<Navigate replace to={ROUTES.POSTS} />} />
               <Route path={ROUTES.POSTS} element={<PostsPage />} />
               <Route path={ROUTES.SINGLE_POST} element={<SinglePostPage />} />
               <Route path={ROUTES.NOT_FOUND} element={<PageNotFound />} />
