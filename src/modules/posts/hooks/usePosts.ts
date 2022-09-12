@@ -28,7 +28,6 @@ export const usePosts = ({ page = 1, limit = 10 }: UsePostsProps) => {
   );
 
   useEffect(() => {
-    data?.length > 0 && console.log(data);
     data?.length > 0 && setPosts((prev) => [...prev, ...data]);
   }, [data]);
 
