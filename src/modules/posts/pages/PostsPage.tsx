@@ -43,20 +43,20 @@ export const PostsPage = () => {
   return (
     <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
       <PageHeaderWithFilter />
-      <div>
+      <div className="flex flex-col gap-y-4">
         {posts?.map((e: PostProps, i) => (
           <Post key={i} {...e} />
         ))}
-        <div
-          ref={lastElementRef}
-          onClick={handleScrollToTop}
-          className="hover:font-semibold cursor-pointer w-fit"
-        >
-          Scroll to top
-        </div>
-        {error && <div>failed to load</div>}
-        {isLoading && <div>loading...</div>}
       </div>
+      <div
+        ref={lastElementRef}
+        onClick={handleScrollToTop}
+        className="hover:font-semibold cursor-pointer w-fit"
+      >
+        Scroll to top
+      </div>
+      {error && <div>failed to load</div>}
+      {isLoading && <div>loading...</div>}
     </div>
   );
 };
