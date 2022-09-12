@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useFilter } from "../../../core/contexts/FilterContext";
+import { Loading } from "../../../shared/components/loading";
+import { Error } from "../../../shared/components/error";
 import { PageHeaderWithFilter } from "../../../shared/components/pageHeaderWithFilter";
 import { Post, PostProps } from "../components/post";
 import { usePosts } from "../hooks/usePosts";
@@ -39,7 +41,6 @@ export const PostsPage = () => {
       block: "start",
     });
   };
-
   return (
     <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
       <PageHeaderWithFilter />
@@ -51,12 +52,14 @@ export const PostsPage = () => {
       <div
         ref={lastElementRef}
         onClick={handleScrollToTop}
-        className="hover:font-semibold cursor-pointer w-full flex flex-row-reverse"
+        className="w-full flex flex-col items-center justify-center pb-10"
       >
-        <div className="w-fit pb-10">Scroll to top</div>
+        {error && <Error />}
+        {isLoading && <Loading />}
+        <div className="hover:font-semibold cursor-pointer w-fit">
+          Scroll to top
+        </div>
       </div>
-      {error && <div>failed to load</div>}
-      {isLoading && <div>loading...</div>}
     </div>
   );
 };

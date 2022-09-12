@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
 import useSWR from "swr";
 import { fetcher } from "../api/fetcher";
 import { useFilter } from "./FilterContext";

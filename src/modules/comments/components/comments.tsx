@@ -1,3 +1,5 @@
+import { Error } from "../../../shared/components/error";
+import { Loading } from "../../../shared/components/loading";
 import { useComments } from "../hooks/useComments";
 
 export interface CommentsProps {
@@ -6,8 +8,8 @@ export interface CommentsProps {
 
 export const Comments = ({ postId }: CommentsProps) => {
   const { data, error } = useComments({ postId });
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  if (error) return <Error />;
+  if (!data) return <Loading />;
 
   return (
     <div className="rounded border border-solid border-gray-300">

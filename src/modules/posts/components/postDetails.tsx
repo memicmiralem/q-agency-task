@@ -1,4 +1,6 @@
 import { useUser } from "../../../core/contexts/UserContext";
+import { Error } from "../../../shared/components/error";
+import { Loading } from "../../../shared/components/loading";
 import { Comments } from "../../comments/components/comments";
 import { AboutUser } from "../../users/components/aboutUser";
 import { usePost } from "../hooks/usePost";
@@ -11,8 +13,8 @@ export const PostDetails = ({ id }: PostDetailsProps) => {
   const { data, error } = usePost({ id });
   const user = useUser({ userId: data?.userId });
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  if (error) return <Error />;
+  if (!data) return <Loading />;
   const { title, body, userId } = data;
 
   return (
