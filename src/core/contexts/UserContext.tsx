@@ -63,10 +63,9 @@ export const UserProvider = ({
   propsMessage,
 }: UserProviderProps & HelloMessageProps) => {
   useHelloEffect({ propsMessage, fun: UserProvider });
-
   const shouldFetch = localStorage.getItem("users") === null;
   const { data } = useSWR(shouldFetch ? `/users` : null, fetcher);
-  if (!data) {
+  if (!data && shouldFetch) {
     return (
       <UserContext.Provider value={[] as UserProps[]}>
         {children}

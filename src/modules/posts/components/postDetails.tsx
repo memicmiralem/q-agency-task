@@ -8,7 +8,7 @@ import { AboutUser } from "../../users/components/aboutUser";
 import { usePost } from "../hooks/usePost";
 
 export interface PostDetailsProps {
-  id: string | undefined;
+  id: string;
 }
 
 export const PostDetails = ({
