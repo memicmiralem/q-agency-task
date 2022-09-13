@@ -1,6 +1,16 @@
-# Getting Started with Create React App
+# Posts&Comments
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A test task for Q agency.
+
+## Technologies used
+- React
+- Typescript
+- TailwindCSS
+- Jest
+- React Context for state management
+- useSWR
+
+Regarding the whole task, it’s typed in React with Typescript and styled with tailwindcss. About 55% of the app is covered with simple Jest tests, ContextAPI provided by React was used for state management. I used useSWR as a wrapper for the fetch function to get data. The app recognizes the system theme and adjusts its looks by it.
 
 ## Available Scripts
 
@@ -18,6 +28,10 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run test:coverage`
+
+Launches the tests and shows a summarized report of test coverage.
 
 ### `npm run build`
 
