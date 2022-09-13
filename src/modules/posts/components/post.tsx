@@ -28,6 +28,7 @@ export const Post = ({
     });
   return (
     <div
+      data-testid="post"
       className="flex flex-col gap-y-4 bg-card dark:bg-card-dark rounded p-5 border border-solid border-border-light dark:border-border-dark hover:cursor-pointer"
       onClick={handleClick}
     >

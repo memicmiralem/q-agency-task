@@ -10,7 +10,7 @@ export const SinglePostPage = ({ propsMessage }: HelloMessageProps) => {
   const { id } = useParams();
 
   return (
-    <div className="h-screen">
+    <div data-testid="single-post-page" className="h-screen">
       <BasicPageHeader propsMessage={propsMessage} />
       <PostDetails id={id} propsMessage={propsMessage} />
     </div>

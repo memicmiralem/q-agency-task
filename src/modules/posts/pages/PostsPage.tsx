@@ -45,9 +45,9 @@ export const PostsPage = ({ propsMessage }: HelloMessageProps) => {
       block: "start",
     });
   };
-  console.log(`isLoading && posts.length > 0 ${isLoading && posts.length > 0}`);
   return (
     <div
+      data-testid="posts-page"
       className="flex flex-col gap-y-4 scroll-mt-32 min-h-screen"
       ref={topOfListRef}
     >
