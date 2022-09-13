@@ -33,7 +33,7 @@ export const Post = ({
       onClick={handleClick}
     >
       <div className="flex justify-between text-font-primary dark:text-font-primary-dark">
-        <div className="font-semibold text-xl">{title}</div>
+        <div className="font-semibold text-xl truncate">{title}</div>
         <div className="font-semibold min-w-fit">{user?.name}</div>
       </div>
       <div className="text-font-primary dark:text-font-primary-dark">

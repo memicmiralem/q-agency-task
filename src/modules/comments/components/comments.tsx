@@ -36,11 +36,11 @@ export const Comments = ({
       <div className="flex flex-col pt-2">
         {data.map(({ id, name, email }) => (
           <div
-            className="flex justify-between px-4 py-2 odd:bg-white even:bg-slate-50 odd:dark:bg-header-dark even:dark:bg-card-dark text-font-primary dark:text-font-primary-dark last:rounded-b"
+            className="flex flex-col md:flex-row justify-between px-4 py-2 odd:bg-white even:bg-slate-50 odd:dark:bg-header-dark even:dark:bg-card-dark text-font-primary dark:text-font-primary-dark last:rounded-b"
             key={id}
           >
             <div>{name}</div>
-            <div>{email}</div>
+            <div className="truncate self-end">{email}</div>
           </div>
         ))}
       </div>
