@@ -7,6 +7,7 @@ export const Error = ({ propsMessage }: HelloMessageProps) => {
 
   return (
     <ErrorIcon
+      data-testid="error-icon"
       width={24}
       className="animate-pulse fill-font-primary dark:fill-font-primary-dark"
     />

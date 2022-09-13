@@ -45,8 +45,12 @@ export const PostsPage = ({ propsMessage }: HelloMessageProps) => {
       block: "start",
     });
   };
+  console.log(`isLoading && posts.length > 0 ${isLoading && posts.length > 0}`);
   return (
-    <div className="flex flex-col gap-y-4 scroll-mt-32" ref={topOfListRef}>
+    <div
+      className="flex flex-col gap-y-4 scroll-mt-32 min-h-screen"
+      ref={topOfListRef}
+    >
       <PageHeaderWithFilter propsMessage={propsMessage} />
       <div className="flex flex-col gap-y-4">
         {posts?.map((e: PostProps, i) => (
@@ -59,10 +63,19 @@ export const PostsPage = ({ propsMessage }: HelloMessageProps) => {
         className="w-full flex flex-col items-center justify-center pb-10"
       >
         {error && <Error propsMessage={propsMessage} />}
-        {isLoading && <Loading propsMessage={propsMessage} />}
-        <div className="hover:font-semibold cursor-pointer w-fit">
-          Scroll to top
-        </div>
+        {isLoading && posts.length > 0 && (
+          <Loading propsMessage={propsMessage} />
+        )}
+
+        {posts.length > 0 ? (
+          <div className="hover:font-semibold cursor-pointer w-fit text-font-primary dark:text-font-primary-dark">
+            Scroll to top
+          </div>
+        ) : (
+          <div className="text-font-secondary dark:text-font-secondary-dark">
+            No results found
+          </div>
+        )}
       </div>
     </div>
   );

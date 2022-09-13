@@ -1,9 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { Route, Navigate, Routes, MemoryRouter } from "react-router-dom";
-import App from "../../App";
-import { ROUTES } from "../../core/constants/routes";
+import { MemoryRouter } from "react-router-dom";
 import { PageRoutes } from "../../core/routes/PageRoutes";
-import { PageNotFound } from "../pages/PageNotFound";
 describe("Testing non-existing url", () => {
   const badRoute = "/some/bad/route";
   render(

@@ -35,6 +35,6 @@ export const usePosts = ({ page = 1, limit = 10 }: UsePostsProps) => {
     error,
     isLoading: !data,
     posts,
-    hasMore: data?.length !== 0,
+    hasMore: data?.length > 0,
   };
 };
