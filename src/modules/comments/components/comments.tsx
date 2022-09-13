@@ -15,8 +15,18 @@ export const Comments = ({
   useHelloEffect({ propsMessage, fun: Comments });
 
   const { data, error } = useComments({ postId });
-  if (error) return <Error propsMessage={propsMessage} />;
-  if (!data) return <Loading propsMessage={propsMessage} />;
+  if (error)
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        <Error propsMessage={propsMessage} />
+      </div>
+    );
+  if (!data)
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        <Loading propsMessage={propsMessage} />
+      </div>
+    );
 
   return (
     <div className="rounded border border-solid border-border-light dark:border-border-dark">
