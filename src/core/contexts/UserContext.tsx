@@ -66,19 +66,17 @@ export const UserProvider = ({
 
   const shouldFetch = localStorage.getItem("users") === null;
   const { data } = useSWR(shouldFetch ? `/users` : null, fetcher);
-
-  if (shouldFetch && data) {
-    localStorage.setItem("users", JSON.stringify(data));
-  } else if (!shouldFetch) {
-    const users = JSON.parse(localStorage.getItem("users") ?? "");
+  if (!data) {
     return (
-      <UserContext.Provider value={users}>{children}</UserContext.Provider>
+      <UserContext.Provider value={[] as UserProps[]}>
+        {children}
+      </UserContext.Provider>
     );
   }
 
-  return (
-    <UserContext.Provider value={[] as UserProps[]}>
-      {children}
-    </UserContext.Provider>
-  );
+  if (shouldFetch) {
+    localStorage.setItem("users", JSON.stringify(data));
+  }
+  const users = JSON.parse(localStorage.getItem("users") ?? "");
+  return <UserContext.Provider value={users}>{children}</UserContext.Provider>;
 };
