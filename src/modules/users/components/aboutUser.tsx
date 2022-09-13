@@ -16,7 +16,7 @@ export const AboutUser = ({
 
   const user = useUser({ userId });
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center text-font-primary dark:text-font-primary-dark">
       <div className="text-2xl">{title}</div>
       <div>{user?.name}</div>
       <div>{`username: ${user?.username}`}</div>

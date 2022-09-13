@@ -19,14 +19,14 @@ export const Comments = ({
   if (!data) return <Loading propsMessage={propsMessage} />;
 
   return (
-    <div className="rounded border border-solid border-gray-300">
-      <div className="-mt-3.5 ml-4 w-fit bg-white text-font-secondary">
+    <div className="rounded border border-solid border-border-light dark:border-border-dark">
+      <div className="-mt-3.5 ml-4 w-fit bg-card dark:bg-card-dark text-font-secondary dark:text-font-secondary-dark">
         Comments
       </div>
       <div className="flex flex-col pt-2">
         {data.map(({ id, name, email }) => (
           <div
-            className="flex justify-between px-4 py-2 odd:bg-white even:bg-slate-50 last:rounded-b"
+            className="flex justify-between px-4 py-2 odd:bg-white even:bg-slate-50 odd:dark:bg-header-dark even:dark:bg-card-dark text-font-primary dark:text-font-primary-dark last:rounded-b"
             key={id}
           >
             <div>{name}</div>

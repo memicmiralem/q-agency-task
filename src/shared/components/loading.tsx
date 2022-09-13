@@ -5,5 +5,10 @@ import { useHelloEffect } from "../../core/hooks/useHelloEffect";
 export const Loading = ({ propsMessage }: HelloMessageProps) => {
   useHelloEffect({ propsMessage, fun: Loading });
 
-  return <LoadingIcon width={24} className="animate-spin" />;
+  return (
+    <LoadingIcon
+      width={24}
+      className="animate-spin fill-font-primary dark:fill-font-primary-dark"
+    />
+  );
 };

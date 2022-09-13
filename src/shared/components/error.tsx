@@ -5,5 +5,10 @@ import { useHelloEffect } from "../../core/hooks/useHelloEffect";
 export const Error = ({ propsMessage }: HelloMessageProps) => {
   useHelloEffect({ propsMessage, fun: Error });
 
-  return <ErrorIcon width={24} className="animate-pulse" />;
+  return (
+    <ErrorIcon
+      width={24}
+      className="animate-pulse fill-font-primary dark:fill-font-primary-dark"
+    />
+  );
 };
