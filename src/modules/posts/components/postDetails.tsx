@@ -20,8 +20,18 @@ export const PostDetails = ({
   const { data, error } = usePost({ id });
   const user = useUser({ userId: data?.userId });
 
-  if (error) return <Error propsMessage={propsMessage} />;
-  if (!data) return <Loading propsMessage={propsMessage} />;
+  if (error)
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        <Error propsMessage={propsMessage} />
+      </div>
+    );
+  if (!data)
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        <Loading propsMessage={propsMessage} />
+      </div>
+    );
   const { title, body, userId } = data;
 
   return (
