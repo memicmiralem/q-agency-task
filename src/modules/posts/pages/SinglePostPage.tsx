@@ -11,7 +11,10 @@ export const SinglePostPage = ({ propsMessage }: HelloMessageProps) => {
   const { id } = useParams();
   if (!id)
     return (
-      <div className="h-full w-full flex items-center justify-center">
+      <div
+        data-testid="single-post-page-error"
+        className="h-full w-full flex items-center justify-center"
+      >
         <Error propsMessage={propsMessage} />
       </div>
     );

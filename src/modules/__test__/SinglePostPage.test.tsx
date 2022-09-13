@@ -1,8 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { SinglePostPage } from "../posts/pages/SinglePostPage";
-describe("Testing aboutUser render", () => {
+describe("Testing SinglePostPage render", () => {
   render(<SinglePostPage propsMessage={""} />);
-  it("Should display aboutUser component", async () => {
-    expect(await screen.getByTestId("single-post-page")).toBeInTheDocument();
+  it("Should display error component because of hook", async () => {
+    expect(
+      await screen.getByTestId("single-post-page-error")
+    ).toBeInTheDocument();
   });
 });
