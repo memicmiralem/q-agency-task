@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { HelloMessageProps } from "../constants/messages";
+import { useDebounce } from "../hooks/useDebounce";
 import { useHelloEffect } from "../hooks/useHelloEffect";
 
 export interface FilterProviderProps {
@@ -12,7 +13,7 @@ const FilterContext = createContext({
 });
 
 export const useFilter = () => {
-  return useContext(FilterContext);
+  return useDebounce(useContext(FilterContext));
 };
 
 export const FilterProvider = ({
