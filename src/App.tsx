@@ -11,15 +11,17 @@ const App = ({ propsMessage }: HelloMessageProps) => {
   useHelloEffect({ propsMessage, fun: App });
 
   return (
-    <BasePageLayout propsMessage={propsMessage}>
-      <BrowserRouter>
-        <UserProvider propsMessage={propsMessage}>
-          <FilterProvider propsMessage={propsMessage}>
-            <PageRoutes propsMessage={propsMessage} />
-          </FilterProvider>
-        </UserProvider>
-      </BrowserRouter>
-    </BasePageLayout>
+    <div data-testid="app">
+      <BasePageLayout propsMessage={propsMessage}>
+        <BrowserRouter>
+          <UserProvider propsMessage={propsMessage}>
+            <FilterProvider propsMessage={propsMessage}>
+              <PageRoutes propsMessage={propsMessage} />
+            </FilterProvider>
+          </UserProvider>
+        </BrowserRouter>
+      </BasePageLayout>
+    </div>
   );
 };
 
